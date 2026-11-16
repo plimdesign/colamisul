@@ -117,9 +117,9 @@ function navMobile() {
 function header(active) {
   return `<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 <header class="site-header"><div class="container bar">
-  <a class="brand" href="${href('/')}" aria-label="Colamisul, página inicial"><img src="${href(S.logo)}" alt="Colamisul" width="172" height="46"></a>
+  <a class="brand" href="${href('/')}" aria-label="Colamisul, página inicial"><img src="${href(S.logoBranca)}" alt="Colamisul" width="172" height="46"></a>
   ${navDesktop(active)}
-  <a class="btn btn--primary btn--sm header-cta" href="${href('/contato/')}">Contato</a>
+  <a class="btn btn--yellow btn--sm header-cta" href="${href('/contato/')}">Contato</a>
   <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="mobile-nav" aria-expanded="false">${I.menu}</button>
 </div></header>
 ${navMobile()}`;
