@@ -203,7 +203,7 @@ function pageHero({ title, crumb = title, eyebrow, lead, image, video, trail, bg
   <div class="s-4 m-6 m-start-2 l-8 l-start-3 center">
     ${crumbs([['Início', '/'], ...(trail || []), [crumb]])}
     ${eyebrow ? `<span class="eyebrow">${esc(eyebrow)}</span>` : ''}
-    ${hideTitle ? '' : `<h1 class="display-l t-green">${esc(title)}</h1>`}
+    ${hideTitle ? '' : `<h1 class="display-l t-green">${esc(title).replace(/\n/g, '<br>')}</h1>`}
     ${lead ? `<p class="lead">${esc(lead)}</p>` : ''}
   </div>
 </div></div></section>`;
@@ -234,7 +234,7 @@ const conselhoSection = () => {
   const C = D.conselho;
   const lista = l => `<ul class="board-list">${l.map(n => `<li>${esc(n)}</li>`).join('')}</ul>`;
   return `<section class="section"><div class="container">
-  <div class="section-head reveal"><div><span class="eyebrow">Gestão da cooperativa</span><h2 class="display-l t-lime">Diretoria Atual e Conselhos</h2></div></div>
+  <div class="section-head reveal"><div><span class="eyebrow">Gestão da cooperativa</span><h2 class="display-l t-lime">Diretoria Atual<br>e Conselhos</h2></div></div>
   <h3 class="board-group reveal">Diretoria Executiva</h3>
   <div class="grid">${C.diretoria.map(p => `<div class="s-4 m-4 l-4 reveal"><figure class="board-person"><div class="photo">${img(p.img, p.nome)}</div><figcaption><span class="role">${esc(p.cargo)}</span><strong>${esc(p.nome)}</strong></figcaption></figure></div>`).join('')}</div>
   <div class="grid mt-l">
@@ -404,7 +404,7 @@ ${ctaParceiro()}`,
 // PRESIDENTES
 add('/presidentes/', {
   title: 'Gestão da Cooperativa', active: '/presidentes/',
-  body: () => `${pageHero({ title: 'Um pouco mais da nossa história', crumb: 'Gestão da Cooperativa', lead: 'A trajetória da Colamisul é construída por pessoas que, ao longo dos anos, dedicaram seu trabalho ao fortalecimento da cooperativa.', image: B.presidentes, trail: [['A Empresa'], ['Nossa história', '/nossa-historia/']] })}
+  body: () => `${pageHero({ title: 'Um pouco mais da\nnossa história', crumb: 'Gestão da Cooperativa', lead: 'A trajetória da Colamisul é construída por pessoas que, ao longo dos anos, dedicaram seu trabalho ao fortalecimento da cooperativa.', image: B.presidentes, trail: [['A Empresa'], ['Nossa história', '/nossa-historia/']] })}
 ${conselhoSection()}
 <section class="section"><div class="container">
   <div class="section-head reveal"><div><span class="eyebrow">Desde 1954</span><h2 class="display-l t-lime">Galeria de Presidentes</h2></div></div>
