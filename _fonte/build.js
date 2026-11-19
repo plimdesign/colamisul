@@ -125,7 +125,7 @@ function header(active) {
 ${navMobile()}`;
 }
 function footer() {
-  const col1 = [['Home', '/'], ['Nossa história', '/nossa-historia/'], ['Presidentes', '/presidentes/'], ['Missão, Visão e Valores', '/missao-visao-e-valores/'], ['Responsabilidade Social e Ambiental', '/responsabilidade-social-e-ambiental/'], ['Serviços ao Cooperado', '/servicos-ao-cooperado/']];
+  const col1 = [['Home', '/'], ['Nossa história', '/nossa-historia/'], ['Gestão da Cooperativa', '/presidentes/'], ['Missão, Visão e Valores', '/missao-visao-e-valores/'], ['Responsabilidade Social e Ambiental', '/responsabilidade-social-e-ambiental/'], ['Serviços ao Cooperado', '/servicos-ao-cooperado/']];
   const col2 = [['Informações Gerais', '/informacoes-gerais/'], ['Produtos', '/produtos/'], ['Informativo Colamisul', '/informativo-colamisul/'], ['Pontos de vendas', '/pontos-de-vendas/'], ['Receitas', '/receitas/'], ['Contato', '/contato/']];
   const li = arr => arr.map(([l, u]) => `<li><a href="${href(u)}">${esc(l)}</a></li>`).join('');
   // fundo da onda = cor da última seção da página (definido no CSS via --footer-wave-bg)
@@ -197,11 +197,11 @@ const banner = (image, video) => video
   ? `<section class="banner banner--video"><iframe src="https://www.youtube-nocookie.com/embed/${video}?autoplay=1&mute=1&loop=1&playlist=${video}&controls=0&disablekb=1&fs=0&iv_load_policy=3&playsinline=1&rel=0&modestbranding=1&cc_load_policy=0&enablejsapi=1" title="Vídeo institucional Colamisul" data-no-captions allow="autoplay; encrypted-media" tabindex="-1"></iframe></section>`
   : `<section class="banner"><img src="${href(image)}" alt="" fetchpriority="high"></section>`;
 
-function pageHero({ title, eyebrow, lead, image, video, trail, bg = '', hideTitle = false }) {
+function pageHero({ title, crumb = title, eyebrow, lead, image, video, trail, bg = '', hideTitle = false }) {
   return `${banner(image, video)}
 <section class="page-intro ${bg}"><div class="container"><div class="grid">
   <div class="s-4 m-6 m-start-2 l-8 l-start-3 center">
-    ${crumbs([['Início', '/'], ...(trail || []), [title]])}
+    ${crumbs([['Início', '/'], ...(trail || []), [crumb]])}
     ${eyebrow ? `<span class="eyebrow">${esc(eyebrow)}</span>` : ''}
     ${hideTitle ? '' : `<h1 class="display-l t-green">${esc(title)}</h1>`}
     ${lead ? `<p class="lead">${esc(lead)}</p>` : ''}
@@ -226,15 +226,15 @@ const newsCard = (n, cls = 's-4 m-4 l-4') => `<div class="${cls} reveal"><a clas
 </a></div>`;
 
 const presidentCard = p => `<div class="s-2 m-2 l-2 president reveal" id="${p.slug}"><figure>
-  <div class="photo">${img(p.img, p.nome)}<span class="ord" aria-hidden="true">${p.ordem}</span></div>
-  <figcaption>${esc(p.nome)}</figcaption></figure></div>`;
+  <div class="photo">${img(p.img, p.nome)}</div>
+  <figcaption>${esc(p.nome)}${p.mandato ? `<span class="mandato">${esc(p.mandato)}</span>` : ''}</figcaption></figure></div>`;
 
 // Presidentes: diretoria executiva (com foto) e conselhos, antes da galeria
 const conselhoSection = () => {
   const C = D.conselho;
   const lista = l => `<ul class="board-list">${l.map(n => `<li>${esc(n)}</li>`).join('')}</ul>`;
   return `<section class="section"><div class="container">
-  <div class="section-head reveal"><div><span class="eyebrow">Gestão da cooperativa</span><h2 class="display-l t-lime">Diretoria e Conselhos</h2></div></div>
+  <div class="section-head reveal"><div><span class="eyebrow">Gestão da cooperativa</span><h2 class="display-l t-lime">Diretoria Atual e Conselhos</h2></div></div>
   <h3 class="board-group reveal">Diretoria Executiva</h3>
   <div class="grid">${C.diretoria.map(p => `<div class="s-4 m-4 l-4 reveal"><figure class="board-person"><div class="photo">${img(p.img, p.nome)}</div><figcaption><span class="role">${esc(p.cargo)}</span><strong>${esc(p.nome)}</strong></figcaption></figure></div>`).join('')}</div>
   <div class="grid mt-l">
@@ -403,8 +403,8 @@ ${ctaParceiro()}`,
 
 // PRESIDENTES
 add('/presidentes/', {
-  title: 'Presidentes', active: '/presidentes/',
-  body: () => `${pageHero({ title: 'Galeria de Presidentes', eyebrow: 'Um pouco mais da nossa história', lead: 'A trajetória da Colamisul é construída por pessoas que, ao longo dos anos, dedicaram seu trabalho ao fortalecimento da cooperativa.', image: B.presidentes, trail: [['A Empresa'], ['Nossa história', '/nossa-historia/']] })}
+  title: 'Gestão da Cooperativa', active: '/presidentes/',
+  body: () => `${pageHero({ title: 'Um pouco mais da nossa história', crumb: 'Gestão da Cooperativa', lead: 'A trajetória da Colamisul é construída por pessoas que, ao longo dos anos, dedicaram seu trabalho ao fortalecimento da cooperativa.', image: B.presidentes, trail: [['A Empresa'], ['Nossa história', '/nossa-historia/']] })}
 ${conselhoSection()}
 <section class="section"><div class="container">
   <div class="section-head reveal"><div><span class="eyebrow">Desde 1954</span><h2 class="display-l t-lime">Galeria de Presidentes</h2></div></div>
@@ -537,7 +537,7 @@ add('/informativo-colamisul/', {
   title: 'Informativo Colamisul', active: '/informativo-colamisul/',
   body: () => `${banner(B.informativos)}
 <section class="section" data-informativos><div class="container"><div class="grid">
-  <div class="s-4 m-8 l-12 sort-row reveal"><label>Classificar por: <select class="select" data-sort><option value="recentes">Mais recente</option><option value="antigos">Mais antigos</option></select></label></div>
+  <div class="s-4 m-8 l-12 sort-row reveal"><label>Classificar por: <select class="select" data-sort><option value="recentes">Mais recentes</option><option value="antigos">Mais antigos</option></select></label></div>
   <aside class="s-4 m-8 l-3 reveal"><div class="filter-panel">
     <h2>Ano de publicação</h2>
     <div class="chips chips--stack" data-filter="ano" role="group" aria-label="Filtrar por ano">

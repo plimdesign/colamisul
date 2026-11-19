@@ -30,7 +30,7 @@ module.exports = {
   nav: [
     { label: 'A Empresa', children: [
       { label: 'Nossa história', href: '/nossa-historia/' },
-      { label: 'Presidentes', href: '/presidentes/' },
+      { label: 'Gestão da Cooperativa', href: '/presidentes/' },
       { label: 'Missão, Visão e Valores', href: '/missao-visao-e-valores/' },
       { label: 'Responsabilidade Social e Ambiental', href: '/responsabilidade-social-e-ambiental/' },
     ]},
@@ -145,28 +145,30 @@ module.exports = {
     d: 'Leve nossos produtos para seu ponto de venda ou rede de distribuição e conquiste seus clientes com alimentos que unem qualidade, origem e propósito.',
   },
 
+  // Galeria de presidentes: [slug, nome, mandato]. Mandatos tirados da legenda das fotos originais (uploads/2026/06).
+  // Fotos recortadas sem a legenda em assets/img/presidentes/<slug>.webp
   presidentes: [
-    ['clarindo-lino-da-silveira', 'Clarindo Lino da Silveira', '2026/06/01-Clarindo-Lino-da-Silveira-25X30-x.jpg'],
-    ['alberto-baptista-da-cunha', 'Alberto Baptista da Cunha', '2026/06/02-Alberto-Baptista-da-Cunha-25X30-x.jpg'],
-    ['sandoval-reis-portugal', 'Sandoval Reis Portugal', '2026/06/03-Sandoval-Reis-Portugal-25x30-x.jpg'],
-    ['dr-olympio-jose-de-abreu', 'Dr Olympio José de Abreu', '2026/06/04-Dr-Olympio-Jose-de-Abreu-25X30-x.jpg'],
-    ['cloves-rodrigues-de-barros', 'Cloves Rodrigues de Barros', '2026/06/05-Cloves-Rodrigues-de-Barros-25X30-x.jpg'],
-    ['milton-paiva-goncalves', 'Milton Paiva Gonçalves', '2026/06/06-Milton-Paiva-Goncalves-25x30-x.jpg'],
-    ['dalton-brum', 'Dalton Brum', '2026/06/07-Dalton-Brum-25x30-x.jpg'],
-    ['joao-de-azevedo-lino', 'João de Azevedo Lino', '2026/06/08-Joao-de-Azevedo-Lino-25x30-x.jpg'],
-    ['hilton-moulin', 'Hilton Moulin', '2026/06/09-Hilton-Moulin-25x30-x.jpg'],
-    ['joaquim-perciano-de-oliveira', 'Joaquim Perciano de Oliveira', '2026/06/10-Joaquim-Perciano-de-Oliveira-25x30-x.jpg'],
-    ['assad-nassur', 'Assad Nassur', '2026/06/11-Assad-Nassur-25x30-x.jpg'],
-    ['julio-cesar-coimbra-de-resende', 'Julio César Coimbra de Resende', '2026/06/12-Julio-Cesar-Coimbra-de-Resende-25x30-x.jpg'],
-    ['nilson-monteiro-da-silva', 'Nilson Monteiro da Silva', '2026/06/13-Nilson-Monteiro-da-Silva-25x30-x.jpg'],
-    ['joaquim-p-g-gamboa', 'Joaquim P G Gamboa', '2026/06/14-Joaquim-P-G-Gamboa-25x30-x.jpg'],
-    ['elio-mofati', 'Elio Mofati', '2026/06/15-Elio-Mofati-25x30-x.jpg'],
-    ['francisco-beredas-gimenes', 'Francisco Beredas Gimenes', '2026/06/16-Francisco-Beredas-Gimenes-25x30-x.jpg'],
-    ['silvinho-goncalves-belloti', 'Silvinho Gonçalves Belloti', '2026/06/17-Slvinho-Goncalves-Belloti-25x30-x.jpg'],
-    ['jose-luiz-vivas', 'José Luiz Vivas', '2026/06/18-Jose-Luiz-Vivas-25x30-x.jpg'],
-    ['jose-antonio-martins-alves', 'José Antonio Martins Alves', '2026/06/19-Jose-Antonio-Martins-Alves-25x30-x.jpg'],
-    ['carlos-alberto-vivas-motta', 'Carlos Alberto Vivas Motta', '2026/06/20-Carlos-Alberto-Vivas-Motta-25x30-x.jpg'],
-  ].map(([slug, nome, img], i) => ({ slug, nome, img: U + img, ordem: i + 1 })),
+    ['clarindo-lino-da-silveira', 'Clarindo Lino da Silveira', '1954/58 - 1961/64'],
+    ['alberto-baptista-da-cunha', 'Alberto Baptista da Cunha', '1958/59'],
+    ['sandoval-reis-portugal', 'Sandoval Reis Portugal', '1959/61'],
+    ['dr-olympio-jose-de-abreu', 'Dr Olympio José de Abreu', '1964/65'],
+    ['cloves-rodrigues-de-barros', 'Cloves Rodrigues de Barros', '1965/68'],
+    ['milton-paiva-goncalves', 'Milton Paiva Gonçalves', '1968/70'],
+    ['dalton-brum', 'Dalton Brum', '1970/73'],
+    ['joao-de-azevedo-lino', 'João de Azevedo Lino', '1973/75'],
+    ['hilton-moulin', 'Hilton Moulin', '1975/77 - 1983/85'],
+    ['joaquim-perciano-de-oliveira', 'Joaquim Perciano de Oliveira', '1977/79'],
+    ['assad-nassur', 'Assad Nassur', '1979/83'],
+    ['julio-cesar-coimbra-de-resende', 'Julio César Coimbra de Resende', '1985/89 - 1991/93'],
+    ['nilson-monteiro-da-silva', 'Nilson Monteiro da Silva', '1989/91 - 1995/97'],
+    ['joaquim-p-g-gamboa', 'Joaquim P G Gamboa', '1993/95'],
+    ['elio-mofati', 'Elio Mofati', '1997/99'],
+    ['francisco-beredas-gimenes', 'Francisco Beredas Gimenes', '1999/03 - 2005/07'],
+    ['silvinho-goncalves-belloti', 'Silvinho Gonçalves Belloti', '2003/05 - 2007/12 - 2015/19'], // na foto está "20015/19"
+    ['jose-luiz-vivas', 'José Luiz Vivas', '2012/15'],
+    ['jose-antonio-martins-alves', 'José Antonio Martins Alves', '2019/25'],
+    ['carlos-alberto-vivas-motta', 'Carlos Alberto Vivas Motta', '2025/27'],
+  ].map(([slug, nome, mandato], i) => ({ slug, nome, mandato, img: `/assets/img/presidentes/${slug}.webp`, ordem: i + 1 })),
 
   // Diretoria e conselhos (págs. 23–24 do PDF da agência). Fotos em assets/img/diretoria/
   conselho: {
